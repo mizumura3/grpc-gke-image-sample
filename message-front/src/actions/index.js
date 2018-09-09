@@ -1,7 +1,6 @@
 import { grpc } from "grpc-web-client";
 import model from "../proto/pb/message_pb";
 import service from "../proto/pb/message_pb_service";
-import { app } from "../../node_modules/hyperapp";
 
 export default {
   // ファイル読み込み
