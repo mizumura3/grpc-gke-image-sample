@@ -4,8 +4,6 @@ Image file uploader with hyperapp + gRPC(Kotlin with Spring Boot) sample
 
 ## server-side
 
-gRPC server side.
-
 - Kotlin
 - Spring Boot
 - gRPC server
