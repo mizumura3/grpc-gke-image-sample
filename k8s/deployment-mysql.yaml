@@ -4,7 +4,7 @@ metadata:
   name: mysql
 spec:
   ports:
-  - port: 3306
+    - port: 3316
   selector:
     app: mysql
   type: LoadBalancer
@@ -36,21 +36,21 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql:5.7
-        name: mysql
-        args:
-        - --character-set-server=utf8
-        - --collation-server=utf8_unicode_ci
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: password
-        ports:
-        - containerPort: 3306
+        - image: mysql:5.7
           name: mysql
-        volumeMounts:
-        - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
+          args:
+            - --character-set-server=utf8
+            - --collation-server=utf8_unicode_ci
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: password
+          ports:
+            - containerPort: 3316
+              name: mysql
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
       volumes:
-      - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
