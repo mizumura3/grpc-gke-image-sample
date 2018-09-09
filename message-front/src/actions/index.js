@@ -19,7 +19,6 @@ export default {
   },
 
   save: e => (state, actions) => {
-    // TODO 画像ファイルを画面に表示する処理追加
     // TODO デザインをまともにする
     // TODO css フレームワーク入れる
     const reader = new FileReader();
@@ -44,12 +43,27 @@ export default {
         }
       });
     };
-
-    const reader2 = new FileReader();
-    reader2.readAsDataURL(state.uploadFile.input.file);
-    reader2.onload = e => {
-      actions.setImages(e.target.result);
-      console.log(e.target.result);
-    };
-  }
+    actions.items();
+  },
+  items: () => (_, actions) => {
+    const req = new model.ItemsRequest();
+    req.setId(1);
+    grpc.unary(service.Message.Items, {
+      request: req,
+      host: "http://localhost:8080",
+      onEnd: res => {
+        const { status, statusMessage, headers, message, trailers } = res;
+        if (status === grpc.Code.OK && message) {
+          const items = new Array();
+          message.toObject().itemsList.forEach(element => {
+            console.log(element);
+            const item = "data:image/jpeg;base64," + element.image;
+            items.push(item);
+          });
+          actions.setItems(items);
+        }
+      }
+    });
+  },
+  setItems: items => () => ({ items })
 };

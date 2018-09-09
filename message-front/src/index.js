@@ -7,7 +7,7 @@ const state = {
   count: 0,
   location: location.state,
   uploadFile: File,
-  images: []
+  items: []
 };
 
 const actions = {
@@ -19,9 +19,6 @@ const actions = {
 
 const view = (state, actions) => (
   <main>
-    <h1>{state.count}</h1>
-    <button onclick={actions.down}>-</button>
-    <button onclick={actions.up}>+</button>
     <div>
       <input
         type="file"
@@ -41,8 +38,13 @@ const view = (state, actions) => (
       <Route path="/hoge" render={Hoge} />
     </div>
     <div>
-      {state.images.map(image => (
-        <img src={image} />
+      <button class="button" onclick={actions.items}>
+        表示
+      </button>
+    </div>
+    <div>
+      {state.items.map(item => (
+        <img src={item} width="200" height="200" />
       ))}
     </div>
   </main>
@@ -50,3 +52,6 @@ const view = (state, actions) => (
 
 export const main = app(state, actions, view, document.body);
 location.subscribe(main.location);
+
+// 初期処理
+main.items();
