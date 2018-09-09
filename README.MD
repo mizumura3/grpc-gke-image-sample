@@ -17,11 +17,12 @@ Image file uploader with hyperapp + gRPC(Kotlin with Spring Boot) sample
 ```
 cd ./message-front
 npm i
+npm start
 ```
 
 ```
 cd ./k8s
-kubectl apply deployment-mysql.yaml
+kubectl apply -f deployment-mysql.yaml
 ```
 
 ```
