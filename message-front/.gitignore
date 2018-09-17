@@ -23,5 +23,3 @@ yarn-error.log*
 /tmp
 /.cache
 /dist
-
-package-lock.json
