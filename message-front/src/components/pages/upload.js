@@ -6,6 +6,7 @@ export default () => (state, actions) => (
     <div>
       <input
         type="file"
+        class="siimple-input--fluid"
         name="file"
         accept="image/*"
         data-input-name="uploadFile"
@@ -13,9 +14,12 @@ export default () => (state, actions) => (
       />
     </div>
     <div>
-      <button class="button" onclick={actions.save}>
+      <button class="siimple-btn siimple-btn--blue" onclick={actions.save}>
         アップロード
       </button>
+      <div class="simple-form-field">
+        <div class="siimple-btn siimple-btn--blue">Send comment</div>
+      </div>
     </div>
     <div>
       <Link to={`/`}>トップへ</Link>

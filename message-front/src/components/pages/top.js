@@ -16,5 +16,8 @@ export default () => (state, actions) => (
         <img src={item} width="200" height="200" />
       ))}
     </div>
+    <div class="simple-form-field">
+      <div class="siimple-btn siimple-btn--blue">Send comment</div>
+    </div>
   </main>
 );
