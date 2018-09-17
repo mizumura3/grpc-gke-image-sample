@@ -27,5 +27,6 @@ kubectl apply -f deployment-mysql.yaml
 
 ```
  cd ./api
+ ./gradlew update
  ./gradlew bootRun
 ```
