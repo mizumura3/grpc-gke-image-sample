@@ -1,0 +1,21 @@
+a {
+  text-decoration: none !important;
+}
+
+.index-menu {
+  font-size: 16px;
+  color: #4a4a4a;
+  font-family: HiraginoSans-W3;
+  letter-spacing: 0;
+  width: 15rem;
+}
+
+.index-menu > li {
+  border-bottom: 1px solid #d5d5d5;
+  padding: 0.25rem 0rem;
+}
+
+.order-items > div {
+  padding-bottom: 0.25rem;
+  padding-top: 0.25rem;
+}
