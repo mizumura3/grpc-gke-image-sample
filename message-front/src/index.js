@@ -1,6 +1,8 @@
 import { h, app } from "hyperapp";
 import { Route, location } from "@hyperapp/router";
-import Hoge from "./components/pages/Hoge";
+import { Link } from "@hyperapp/router";
+import Upload from "./components/pages/Upload";
+import Top from "./components/pages/Top";
 import actionsBase from "./actions";
 
 const state = {
@@ -20,33 +22,12 @@ const actions = {
 const view = (state, actions) => (
   <main>
     <div>
-      <input
-        type="file"
-        name="file"
-        accept="image/*"
-        data-input-name="uploadFile"
-        onchange={actions.onChange}
-      />
-    </div>
-    <div>
-      <button class="button" onclick={actions.save}>
-        アップロード
-      </button>
-    </div>
-    <div>aaa</div>
-    <div>
-      <Route path="/hoge" render={Hoge} />
-    </div>
-    <div>
-      <button class="button" onclick={actions.items}>
-        表示
-      </button>
-    </div>
-    <div>
       {state.items.map(item => (
         <img src={item} width="200" height="200" />
       ))}
     </div>
+    <Route path="/" render={Top} />
+    <Route path="/upload" render={Upload} />
   </main>
 );
 
