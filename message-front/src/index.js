@@ -1,6 +1,5 @@
 import { h, app } from "hyperapp";
 import { Route, location } from "@hyperapp/router";
-import { Link } from "@hyperapp/router";
 import Upload from "./components/pages/Upload";
 import Top from "./components/pages/Top";
 import Header from "./components/pages/Header";

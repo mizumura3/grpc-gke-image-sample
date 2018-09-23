@@ -13,13 +13,7 @@ export default {
     }
   }),
 
-  setImages: images => () => {
-    console.log("hoge");
-  },
-
   save: e => (state, actions) => {
-    // TODO デザインをまともにする
-    // TODO css フレームワーク入れる
     const reader = new FileReader();
 
     // ArrayBuffer のインスタンス作って Unit8Array にしたらいけた
@@ -44,6 +38,7 @@ export default {
     };
     actions.items();
   },
+
   items: () => (_, actions) => {
     const req = new model.ItemsRequest();
     req.setId(1);

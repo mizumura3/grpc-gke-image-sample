@@ -8,9 +8,9 @@ export default () => (state, actions) => (
     aria-label="main navigation"
   >
     <div class="navbar-brand">
-      <a class="navbar-item" href="http://localhost:1234">
-        <div>LGTM</div>
-      </a>
+      <Link class="navbar-item" to={`/`}>
+        LGTM
+      </Link>
 
       <a
         role="button"
@@ -26,15 +26,15 @@ export default () => (state, actions) => (
 
     <div class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="http://localhost:1234">
-          Home
-        </a>
-        <a class="navbar-item" href="http://localhost:1234">
+        <Link class="navbar-item" to={`/`}>
+          HOME
+        </Link>
+        <Link class="navbar-item" to={`/upload`}>
           Submit
-        </a>
-        <a class="navbar-item" href="http://localhost:1234">
+        </Link>
+        <Link class="navbar-item" to={`/`}>
           Random
-        </a>
+        </Link>
       </div>
     </div>
   </nav>
