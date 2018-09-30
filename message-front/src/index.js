@@ -3,6 +3,7 @@ import { Route, location } from "@hyperapp/router";
 import Upload from "./components/pages/Upload";
 import Top from "./components/pages/Top";
 import Header from "./components/pages/Header";
+import Footer from "./components/pages/Footer";
 import actionsBase from "./actions";
 import "./global.css";
 import "./bulma.css";
@@ -29,6 +30,9 @@ const view = (state, actions) => (
 
     <Route path="/" render={Top} />
     <Route path="/upload" render={Upload} />
+    <div class="container">
+      <Footer />
+    </div>
   </main>
 );
 
