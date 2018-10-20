@@ -6,6 +6,7 @@ import io.grpc.testing.GrpcServerRule
 import message.Application
 import message.generated.grpc.MessageGrpc
 import message.generated.grpc.MessageOuterClass
+import message.handler.MessageHandler
 import message.repository.MessageRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before

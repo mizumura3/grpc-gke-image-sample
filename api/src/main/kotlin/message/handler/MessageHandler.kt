@@ -1,7 +1,6 @@
-package message.service
+package message.handler
 
 import com.google.protobuf.ByteString
-import io.grpc.netty.InternalNettyChannelBuilder
 import io.grpc.stub.StreamObserver
 import message.domain.Message
 import message.generated.grpc.MessageGrpc
