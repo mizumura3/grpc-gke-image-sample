@@ -9,6 +9,9 @@ export class MessageModel extends jspb.Message {
   getImage_asB64(): string;
   setImage(value: Uint8Array | string): void;
 
+  getName(): string;
+  setName(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MessageModel.AsObject;
   static toObject(includeInstance: boolean, msg: MessageModel): MessageModel.AsObject;
@@ -22,6 +25,7 @@ export class MessageModel extends jspb.Message {
 export namespace MessageModel {
   export type AsObject = {
     image: Uint8Array | string,
+    name: string,
   }
 }
 

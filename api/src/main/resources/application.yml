@@ -18,6 +18,9 @@ spring:
     username: root
     password: password
 
+gcp:
+  secretKey: /Users/mizumura/project/secrets/gcp-secret.json
+
 ---
 spring:
   profiles: production

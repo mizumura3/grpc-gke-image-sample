@@ -64,7 +64,8 @@ proto.message.MessageModel.prototype.toObject = function(opt_includeInstance) {
  */
 proto.message.MessageModel.toObject = function(includeInstance, msg) {
   var f, obj = {
-    image: msg.getImage_asB64()
+    image: msg.getImage_asB64(),
+    name: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -105,6 +106,10 @@ proto.message.MessageModel.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setImage(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -138,6 +143,13 @@ proto.message.MessageModel.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeBytes(
       1,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
       f
     );
   }
@@ -180,6 +192,21 @@ proto.message.MessageModel.prototype.getImage_asU8 = function() {
 /** @param {!(string|Uint8Array)} value */
 proto.message.MessageModel.prototype.setImage = function(value) {
   jspb.Message.setProto3BytesField(this, 1, value);
+};
+
+
+/**
+ * optional string name = 2;
+ * @return {string}
+ */
+proto.message.MessageModel.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/** @param {string} value */
+proto.message.MessageModel.prototype.setName = function(value) {
+  jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

@@ -1,3 +1,5 @@
 package message.service
 
-interface ImageUploadService
+interface ImageUploadService {
+    fun upload(name: String, byteArray: ByteArray)
+}

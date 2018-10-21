@@ -10,6 +10,7 @@ service Message {
 
 message MessageModel {
   bytes image = 1;
+  string name = 2;
 }
 
 message PostMessageRequest {
