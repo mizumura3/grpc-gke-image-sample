@@ -1,5 +1,5 @@
 {
-  "name": "message-front",
+  "name": "lgtm-ika",
   "version": "0.1.0",
   "private": true,
   "engines": {
@@ -23,8 +23,8 @@
   },
   "scripts": {
     "start": "parcel ./src/index.html --open",
-    "build": "parcel build --no-minify ./src/index.html",
-    "build-server": "http-server -o -d dist",
+    "build": "parcel build --no-minify ./src/index.html -d build",
+    "build-server": "http-server -o -d build",
     "eslint": "eslint src"
   },
   "devDependencies": {
