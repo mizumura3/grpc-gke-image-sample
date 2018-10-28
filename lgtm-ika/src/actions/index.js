@@ -1,6 +1,7 @@
 import { grpc } from "grpc-web-client";
 import model from "../proto/pb/message_pb";
 import service from "../proto/pb/message_pb_service";
+import { firebaseApp } from "../firebase/";
 
 export default {
   // ファイル読み込み
@@ -13,32 +14,23 @@ export default {
     }
   }),
 
-  save: e => (state, actions) => {
-    const reader = new FileReader();
-
-    // ArrayBuffer のインスタンス作って Unit8Array にしたらいけた
-    reader.readAsArrayBuffer(state.uploadFile.input.file);
-    reader.onload = e => {
-      const postMessageReq = new model.PostMessageRequest();
-      const messageModel = new model.MessageModel();
-
-      messageModel.setImage(new Uint8Array(reader.result));
-      postMessageReq.setMessage(messageModel);
-
-      grpc.unary(service.Message.PostMessage, {
-        request: postMessageReq,
-        host: "http://localhost:8080",
-        onEnd: res => {
-          const { status, statusMessage, headers, message, trailers } = res;
-          if (status === grpc.Code.OK && message) {
-            console.log(message.toObject());
-          }
-        }
-      });
-    };
-    actions.items();
+  // ファイルをアップロードする
+  save: () => state => {
+    const uploadTask = firebaseApp
+      .storage()
+      .ref()
+      .child(state.uploadFile.input.file.name)
+      .put(state.uploadFile.input.file);
+    uploadTask.on("state_changed", {
+      complete: () => {
+        uploadTask.snapshot.ref.getDownloadURL().then(downloadUrl => {
+          console.log(downloadUrl);
+        });
+      }
+    });
   },
 
+  // ファイルを取得する
   items: () => (_, actions) => {
     const req = new model.ItemsRequest();
     req.setId(1);
