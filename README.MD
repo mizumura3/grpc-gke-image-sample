@@ -13,7 +13,6 @@ Image file uploader with hyperapp + firebase sample
 ## start
 
 ```
-cd ./message-front
 npm i
 npm start
 ```
