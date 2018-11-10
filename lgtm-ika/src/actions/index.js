@@ -16,6 +16,9 @@ export default {
 
   // ファイルをアップロードする
   save: () => state => {
+    // console.log("hogehoge");
+    // console.log(state.uploadFile.input.file.name);
+    // console.log(state);
     const uploadTask = firebaseApp
       .storage()
       .ref()
