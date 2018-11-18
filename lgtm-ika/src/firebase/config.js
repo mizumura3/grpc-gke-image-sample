@@ -6,3 +6,5 @@ export const firebaseConfig = {
   storageBucket: "lgtm-ika-b1225.appspot.com",
   messagingSenderId: "622824394478"
 };
+
+export const firestoreSettings = { timestampsInSnapshots: true };

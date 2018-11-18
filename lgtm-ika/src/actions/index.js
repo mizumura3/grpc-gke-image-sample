@@ -1,4 +1,5 @@
 import { firebaseApp } from "../firebase/";
+import { firestoreApp } from "../firebase";
 
 export default {
   // ファイル読み込み
@@ -13,14 +14,8 @@ export default {
 
   // ファイルをアップロードする
   save: () => state => {
-    // console.log("hogehoge");
     // console.log(state.uploadFile.input.file.name);
     // console.log(state);
-
-    // firestore 初期化
-    const db = firebaseApp.firestore();
-    const settings = { timestampsInSnapshots: true };
-    db.settings(settings);
 
     const uploadTask = firebaseApp
       .storage()
@@ -31,7 +26,7 @@ export default {
       complete: () => {
         uploadTask.snapshot.ref.getDownloadURL().then(downloadUrl => {
           console.log(downloadUrl);
-          db.collection("images").add({ url: downloadUrl });
+          firestoreApp.collection("images").add({ url: downloadUrl });
         });
       }
     });
