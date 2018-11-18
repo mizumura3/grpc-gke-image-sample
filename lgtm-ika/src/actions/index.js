@@ -1,6 +1,3 @@
-import { grpc } from "grpc-web-client";
-import model from "../proto/pb/message_pb";
-import service from "../proto/pb/message_pb_service";
 import { firebaseApp } from "../firebase/";
 
 export default {
@@ -19,6 +16,9 @@ export default {
     // console.log("hogehoge");
     // console.log(state.uploadFile.input.file.name);
     // console.log(state);
+
+    // firestore 初期化
+    const db = firebaseApp.firestore();
     const uploadTask = firebaseApp
       .storage()
       .ref()
@@ -34,25 +34,6 @@ export default {
   },
 
   // ファイルを取得する
-  items: () => (_, actions) => {
-    const req = new model.ItemsRequest();
-    req.setId(1);
-    grpc.unary(service.Message.Items, {
-      request: req,
-      host: "http://localhost:8080",
-      onEnd: res => {
-        const { status, statusMessage, headers, message, trailers } = res;
-        if (status === grpc.Code.OK && message) {
-          const items = new Array();
-          message.toObject().itemsList.forEach(element => {
-            console.log(element);
-            const item = "data:image/jpeg;base64," + element.image;
-            items.push(item);
-          });
-          actions.setItems(items);
-        }
-      }
-    });
-  },
+  items: () => (_, actions) => {},
   setItems: items => () => ({ items })
 };
