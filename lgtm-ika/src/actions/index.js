@@ -22,7 +22,7 @@ export default {
     const uploadTask = firebaseApp
       .storage()
       .ref()
-      .child(state.uploadFile.input.file.name)
+      .child("/images/" + state.uploadFile.input.file.name)
       .put(state.uploadFile.input.file);
     uploadTask.on("state_changed", {
       complete: () => {
