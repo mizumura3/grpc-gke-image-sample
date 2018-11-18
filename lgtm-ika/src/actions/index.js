@@ -19,6 +19,9 @@ export default {
 
     // firestore 初期化
     const db = firebaseApp.firestore();
+    const settings = { timestampsInSnapshots: true };
+    db.settings(settings);
+
     const uploadTask = firebaseApp
       .storage()
       .ref()
@@ -28,6 +31,7 @@ export default {
       complete: () => {
         uploadTask.snapshot.ref.getDownloadURL().then(downloadUrl => {
           console.log(downloadUrl);
+          db.collection("images").add({ url: downloadUrl });
         });
       }
     });
