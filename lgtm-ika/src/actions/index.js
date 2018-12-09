@@ -33,6 +33,18 @@ export default {
   },
 
   // ファイルを取得する
-  items: () => (_, actions) => {},
+  items: () => async (state, actions) => {
+    const result = new Array();
+    await firestoreApp
+      .collection("images")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          console.log(doc.id, " => ", doc.data().url);
+          result.push(doc.data().url);
+        });
+      });
+    actions.setItems(result);
+  },
   setItems: items => () => ({ items })
 };
