@@ -46,5 +46,5 @@ export default {
       });
     actions.setItems(result);
   },
-  setItems: items => () => ({ items })
+  setItems: items => ({ items })
 };
