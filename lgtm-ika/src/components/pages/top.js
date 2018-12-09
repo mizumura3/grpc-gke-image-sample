@@ -8,7 +8,28 @@ export default () => (state, actions) => (
         {state.items.map((item, index) => (
           <div class="column is-one-quarter">
             <img key={index} src={item} width="200" height="200" />
-            <input type="text">{index}</input>
+            <input
+              type="text"
+              readonly
+              value={"[![LGTM](".concat(item).concat(")]")}
+              onclick={e => {
+                actions.set({
+                  code: e.target.value
+                });
+                actions.copy();
+              }}
+            />
+            <button
+              onclick={e => {
+                actions.set({
+                  code: e.target.value
+                });
+                actions.copy();
+              }}
+              value={"[![LGTM](".concat(item).concat(")]")}
+            >
+              Copy
+            </button>
           </div>
         ))}
       </div>

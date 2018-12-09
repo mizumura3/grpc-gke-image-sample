@@ -46,5 +46,23 @@ export default {
       });
     actions.setItems(result);
   },
-  setItems: items => ({ items })
+  setItems: items => ({ items }),
+  copy: () => (state, actions) => {
+    navigator.clipboard
+      .writeText(state.code)
+      .then(() => {
+        console.log("Text is on the clipboard.");
+        console.log(state.code);
+        actions.set({
+          message: "Code copied to clipboard."
+        });
+      })
+      .catch(e => {
+        console.error(e);
+        actions.set({
+          message: "Sorry, unable to copy to clipboard."
+        });
+      });
+  },
+  set: x => x
 };
