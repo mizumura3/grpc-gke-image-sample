@@ -8,6 +8,7 @@ export default () => (state, actions) => (
         {state.items.map((item, index) => (
           <div class="column is-one-quarter">
             <img key={index} src={item} width="200" height="200" />
+            <input type="text">{index}</input>
           </div>
         ))}
       </div>
