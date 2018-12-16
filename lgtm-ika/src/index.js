@@ -17,8 +17,6 @@ const state = {
 
 const actions = {
   ...actionsBase,
-  down: () => state => ({ count: state.count - 1 }),
-  up: () => state => ({ count: state.count + 1 }),
   location: location.actions
 };
 

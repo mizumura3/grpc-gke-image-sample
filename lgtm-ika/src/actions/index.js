@@ -46,7 +46,11 @@ export default {
       });
     actions.setItems(result);
   },
+
+  // アイテムを設定する
   setItems: items => ({ items }),
+
+  // url をクリップボードにコピーする
   copy: () => (state, actions) => {
     navigator.clipboard
       .writeText(state.code)
