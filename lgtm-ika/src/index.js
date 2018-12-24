@@ -36,6 +36,3 @@ const view = (state, actions) => (
 
 export const main = app(state, actions, view, document.body);
 location.subscribe(main.location);
-
-// 初期処理
-main.items();
